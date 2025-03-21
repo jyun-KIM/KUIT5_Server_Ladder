@@ -2,6 +2,8 @@ package ladder;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static ladder.ExceptionMessage.*;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -76,6 +78,28 @@ class RowTest {
         //then
         assertThat(position.getValue()).isEqualTo(2);
     }
+
+    @ParameterizedTest
+    @CsvSource({
+            "0, 1",
+            "1, 0",
+            "2, 2"
+    })
+    @DisplayName("세 칸 사다리 선 이동 (ParameterizedTest 적용)")
+    void testThreeStepLadderLineMovement(int input, int expectedResult) {
+        //when
+        GreaterThanOne numberOfPerson = GreaterThanOne.from(3);
+        Row row = new Row(numberOfPerson);
+        row.drawLine(Position.from(0));
+
+        //given
+        Position position = Position.from(input);
+        row.nextPosition(position);
+
+        //then
+        assertThat(position.getValue()).isEqualTo(expectedResult);
+    }
+
 
     @Test
     @DisplayName("사다리 사람 수 예외 처리")

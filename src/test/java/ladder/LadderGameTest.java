@@ -3,6 +3,8 @@ package ladder;
 import ladder.creator.LadderCreator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static ladder.ExceptionMessage.*;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -72,4 +74,30 @@ class LadderGameTest {
         //then
         assertThat(ladderGame.run(position)).isEqualTo(0);
     }
+
+    @ParameterizedTest
+    @CsvSource({
+            "0, 2",
+            "1, 1",
+            "2, 0"
+    })
+    @DisplayName("사다리 결과 확인 (ParameterizedTest 적용)")
+    void testLadderResult(int input, int expectedResult) {
+        //when
+        GreaterThanOne numberOfPerson = GreaterThanOne.from(4);
+        GreaterThanOne row = GreaterThanOne.from(3);
+        LadderCreator ladderCreator = new LadderCreator(row, numberOfPerson);
+        LadderGame ladderGame = new LadderGame(ladderCreator);
+
+        ladderCreator.drawLine(Position.from(0), Position.from(0));
+        ladderCreator.drawLine(Position.from(1), Position.from(1));
+        ladderCreator.drawLine(Position.from(2), Position.from(0));
+
+        //given
+        Position position = Position.from(input);
+
+        //then
+        assertThat(ladderGame.run(position)).isEqualTo(expectedResult);
+    }
+
 }
