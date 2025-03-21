@@ -3,6 +3,7 @@ package ladder;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static ladder.ExceptionMessage.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -75,7 +76,7 @@ class RowTest {
     void throwLadderPersonCountException() {
         assertThatThrownBy(() -> new Row(GreaterThanOne.from(1)))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(ExceptionMessage.INVALID_LADDER_NUMBER.getMessage());
+                .hasMessage(INVALID_LADDER_NUMBER.getMessage());
     }
 
     @Test
@@ -91,7 +92,7 @@ class RowTest {
         //then
         assertThatThrownBy(() -> row.nextPosition(position))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(ExceptionMessage.INVALID_POSITION.getMessage());
+                .hasMessage(INVALID_POSITION.getMessage());
     }
 
     @Test
@@ -107,7 +108,7 @@ class RowTest {
         //then
         assertThatThrownBy(() -> row.nextPosition(position))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(ExceptionMessage.INVALID_POSITION.getMessage());
+                .hasMessage(INVALID_POSITION.getMessage());
     }
 
     @Test
@@ -123,7 +124,7 @@ class RowTest {
         //then
         assertThatThrownBy(() -> row.drawLine(position))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(ExceptionMessage.INVALID_DRAW_POSITION.getMessage());
+                .hasMessage(INVALID_DRAW_POSITION.getMessage());
     }
 
     @Test
@@ -139,7 +140,7 @@ class RowTest {
         //then
         assertThatThrownBy(() -> row.drawLine(position))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(ExceptionMessage.INVALID_DRAW_POSITION.getMessage());
+                .hasMessage(INVALID_DRAW_POSITION.getMessage());
     }
 
     @Test
@@ -153,7 +154,7 @@ class RowTest {
         //then
         assertThatThrownBy(() -> row.drawLine(1))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(ExceptionMessage.INVALID_DRAW_POSITION.getMessage());
+                .hasMessage(INVALID_DRAW_POSITION.getMessage());
     }
 
     @Test
@@ -167,6 +168,6 @@ class RowTest {
         //then
         assertThatThrownBy(() -> row.drawLine(0))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(ExceptionMessage.INVALID_DRAW_POSITION.getMessage());
+                .hasMessage(INVALID_DRAW_POSITION.getMessage());
     }
 }

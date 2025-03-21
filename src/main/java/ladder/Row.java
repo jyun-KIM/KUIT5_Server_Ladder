@@ -1,5 +1,8 @@
 package ladder;
 
+import static ladder.Direction.*;
+import static ladder.ExceptionMessage.*;
+
 public class Row {
     private final int[] row;
 
@@ -9,8 +12,8 @@ public class Row {
 
     public void drawLine(int startPosition) {
         validateDrawLinePosition(startPosition);
-        row[startPosition] = Direction.RIGHT.getValue();
-        row[startPosition + 1] = Direction.LEFT.getValue();
+        row[startPosition] = RIGHT.getValue();
+        row[startPosition + 1] = LEFT.getValue();
     }
 
     public int nextPosition(int position) {
@@ -26,22 +29,22 @@ public class Row {
     }
 
     private boolean isLeft(int position) {
-        return row[position] == Direction.LEFT.getValue();
+        return row[position] == LEFT.getValue();
     }
 
     private boolean isRight(int position) {
-        return row[position] == Direction.RIGHT.getValue();
+        return row[position] == RIGHT.getValue();
     }
 
     private void validatePosition(int position) {
         if (position >= row.length || position < 0) {
-            throw new IllegalArgumentException(ExceptionMessage.INVALID_POSITION.getMessage());
+            throw new IllegalArgumentException(INVALID_POSITION.getMessage());
         }
     }
 
     private void validateDrawLinePosition(int startPosition) {
-        if (startPosition >= row.length - 1 || startPosition < 0 || row[startPosition] == Direction.LEFT.getValue() || row[startPosition + 1] == Direction.RIGHT.getValue()) {
-            throw new IllegalArgumentException(ExceptionMessage.INVALID_DRAW_POSITION.getMessage());
+        if (startPosition >= row.length - 1 || startPosition < 0 || row[startPosition] == LEFT.getValue() || row[startPosition + 1] == RIGHT.getValue()) {
+            throw new IllegalArgumentException(INVALID_DRAW_POSITION.getMessage());
         }
     }
 }

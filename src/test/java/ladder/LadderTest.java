@@ -3,6 +3,7 @@ package ladder;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static ladder.ExceptionMessage.*;
 import static org.assertj.core.api.Assertions.*;
 
 class LadderTest {
@@ -34,7 +35,7 @@ class LadderTest {
         //then
         assertThatThrownBy(() -> ladder.run(nthOfPerson))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(ExceptionMessage.INVALID_POSITION.getMessage());
+                .hasMessage(INVALID_POSITION.getMessage());
     }
 
     @Test

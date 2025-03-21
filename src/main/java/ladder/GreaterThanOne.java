@@ -1,5 +1,7 @@
 package ladder;
 
+import static ladder.ExceptionMessage.*;
+
 public class GreaterThanOne {
 
     private final int number;
@@ -19,7 +21,7 @@ public class GreaterThanOne {
 
     private void validate(int number) {
         if (!isGreaterThanOne(number)) {
-            throw new IllegalArgumentException(ExceptionMessage.INVALID_LADDER_NUMBER.getMessage());
+            throw new IllegalArgumentException(INVALID_LADDER_NUMBER.getMessage());
         }
     }
 
