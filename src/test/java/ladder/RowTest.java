@@ -12,7 +12,7 @@ class RowTest {
     @DisplayName("한 칸 사다리 이동")
     void testOneStepLadderMovement() {
         //when
-        int numberOfPerson = 1;
+        GreaterThanOne numberOfPerson = GreaterThanOne.from(2);
         Row row = new Row(numberOfPerson);
 
         //given
@@ -26,7 +26,7 @@ class RowTest {
     @DisplayName("두 칸 사다리 선 이동")
     void testTwoStepLadderLineMovement() {
         //when
-        int numberOfPerson = 2;
+        GreaterThanOne numberOfPerson = GreaterThanOne.from(2);
         Row row = new Row(numberOfPerson);
         row.drawLine(0);
 
@@ -47,7 +47,7 @@ class RowTest {
     @DisplayName("세 칸 사다리 선 이동")
     void testThreeStepLadderLineMovement() {
         //when
-        int numberOfPerson = 3;
+        GreaterThanOne numberOfPerson = GreaterThanOne.from(3);
         Row row = new Row(numberOfPerson);
         row.drawLine(0);
 
@@ -73,7 +73,7 @@ class RowTest {
     @Test
     @DisplayName("사다리 사람 수 예외 처리")
     void throwLadderPersonCountException() {
-        assertThatThrownBy(() -> new Row(0))
+        assertThatThrownBy(() -> new Row(GreaterThanOne.from(1)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -81,7 +81,7 @@ class RowTest {
     @DisplayName("사다리 최대 사람 수 초과 예외")
     void throwLadderExceedsMaxPersonCountException() {
         //when
-        int numberOfPerson = 3;
+        GreaterThanOne numberOfPerson = GreaterThanOne.from(3);
         Row row = new Row(numberOfPerson);
 
         //given
@@ -96,7 +96,7 @@ class RowTest {
     @DisplayName("사다리 최소 사람 수 미만 예외")
     void throwLadderBelowMinPersonCountException() {
         //when
-        int numberOfPerson = 3;
+        GreaterThanOne numberOfPerson = GreaterThanOne.from(3);
         Row row = new Row(numberOfPerson);
 
         //given
@@ -111,7 +111,7 @@ class RowTest {
     @DisplayName("사다리 그리기 위치 초과 예외")
     void throwLadderDrawingPositionExceedsLimitException() {
         //when
-        int numberOfPerson = 3;
+        GreaterThanOne numberOfPerson = GreaterThanOne.from(3);
         Row row = new Row(numberOfPerson);
 
         //given
@@ -126,7 +126,7 @@ class RowTest {
     @DisplayName("사다리 그리기 위치 미만 예외")
     void throwLadderDrawingPositionBelowLimitException() {
         //when
-        int numberOfPerson = 3;
+        GreaterThanOne numberOfPerson = GreaterThanOne.from(3);
         Row row = new Row(numberOfPerson);
 
         //given
@@ -141,7 +141,7 @@ class RowTest {
     @DisplayName("사다리 그리기 좌측 선 중복 예외")
     void throwLadderDrawingLeftLineDuplicateException() {
         //when
-        int numberOfPerson = 3;
+        GreaterThanOne numberOfPerson = GreaterThanOne.from(3);
         Row row = new Row(numberOfPerson);
         row.drawLine(0);
 
@@ -154,7 +154,7 @@ class RowTest {
     @DisplayName("사다리 그리기 우측 선 중복 예외")
     void throwLadderDrawingRightLineDuplicateException() {
         //when
-        int numberOfPerson = 3;
+        GreaterThanOne numberOfPerson = GreaterThanOne.from(3);
         Row row = new Row(numberOfPerson);
         row.drawLine(1);
 

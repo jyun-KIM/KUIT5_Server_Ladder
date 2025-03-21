@@ -3,9 +3,8 @@ package ladder;
 public class Row {
     private final int[] row;
 
-    public Row(int numberOfPerson) {
-        validateNumberOfPerson(numberOfPerson);
-        row = new int[numberOfPerson];
+    public Row(GreaterThanOne numberOfPerson) {
+        row = new int[numberOfPerson.getNumber()];
     }
 
     public void drawLine(int startPosition) {
