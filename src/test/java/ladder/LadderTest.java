@@ -33,7 +33,8 @@ class LadderTest {
 
         //then
         assertThatThrownBy(() -> ladder.run(nthOfPerson))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ExceptionMessage.INVALID_POSITION.getMessage());
     }
 
     @Test

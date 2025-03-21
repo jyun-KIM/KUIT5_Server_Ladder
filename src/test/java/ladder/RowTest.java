@@ -74,7 +74,8 @@ class RowTest {
     @DisplayName("사다리 사람 수 예외 처리")
     void throwLadderPersonCountException() {
         assertThatThrownBy(() -> new Row(GreaterThanOne.from(1)))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ExceptionMessage.INVALID_LADDER_NUMBER.getMessage());
     }
 
     @Test
@@ -89,7 +90,8 @@ class RowTest {
 
         //then
         assertThatThrownBy(() -> row.nextPosition(position))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ExceptionMessage.INVALID_POSITION.getMessage());
     }
 
     @Test
@@ -104,7 +106,8 @@ class RowTest {
 
         //then
         assertThatThrownBy(() -> row.nextPosition(position))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ExceptionMessage.INVALID_POSITION.getMessage());
     }
 
     @Test
@@ -119,7 +122,8 @@ class RowTest {
 
         //then
         assertThatThrownBy(() -> row.drawLine(position))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ExceptionMessage.INVALID_DRAW_POSITION.getMessage());
     }
 
     @Test
@@ -134,7 +138,8 @@ class RowTest {
 
         //then
         assertThatThrownBy(() -> row.drawLine(position))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ExceptionMessage.INVALID_DRAW_POSITION.getMessage());
     }
 
     @Test
@@ -147,7 +152,8 @@ class RowTest {
 
         //then
         assertThatThrownBy(() -> row.drawLine(1))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ExceptionMessage.INVALID_DRAW_POSITION.getMessage());
     }
 
     @Test
@@ -160,7 +166,7 @@ class RowTest {
 
         //then
         assertThatThrownBy(() -> row.drawLine(0))
-                .isInstanceOf(IllegalArgumentException.class);
-
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ExceptionMessage.INVALID_DRAW_POSITION.getMessage());
     }
 }
