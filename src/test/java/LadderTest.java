@@ -45,5 +45,46 @@ class LadderTest {
                 .hasMessage("유효한 위치가 아닙니다.");
     }
 
+    @Test
+    @DisplayName("사다리 게임 실행 - 직진")
+    void runTest_StraightDown () throws Exception {
+        //given
+        Ladder ladder = new Ladder(5, 4);
+
+        //when
+        int result = ladder.run(1);
+
+        //then
+        Assertions.assertThat(result).isEqualTo(1);
+     }
+
+     @Test
+     @DisplayName("사다리 게임 실행 - 사다리 그려서 확인")
+     void runTest_MoveLeft () throws Exception {
+         //given
+         Ladder ladder = new Ladder(5,4);
+         ladder.drawLine(2, 1); // (2,1) → (1,1)로 이동
+         ladder.drawLine(1, 2); // (1,2) → (2,2)로 이동
+
+         //when
+         int result = ladder.run(2);
+         int result2 = ladder.run(3);
+
+         //then
+         Assertions.assertThat(result).isEqualTo(3);
+         Assertions.assertThat(result2).isEqualTo(3);
+      }
+
+      @Test
+      @DisplayName("")
+      void testName () throws Exception {
+          //given
+
+          //when
+
+          //then
+       }
+       
+
 
 }

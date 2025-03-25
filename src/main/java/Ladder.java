@@ -23,9 +23,20 @@ public class Ladder {
 
     //TODO: 게임 실행
     public int run(int ladderNum){
-        int result = 0;
+        int run_x = ladderNum;
+        int run_y = 0;
 
-        return result;
+        while(run_y < row-1 ){
+            if (run_x < row && rows[run_x][run_y] == 1 && rows[run_x][run_y] == 1){
+                run_x -= 1;
+            }
+            if (rows[run_x][run_y] == 1 && rows[run_x + 1][run_y] == 1){
+                run_x += 1;
+            }
+            run_y+=1;
+        }
+//TODO: 예외 처리해야함
+        return run_x;
     }
 
     public int[][] getRows() {
